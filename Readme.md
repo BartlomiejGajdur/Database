@@ -1,1 +1,1 @@
-dasdasdasdas
+Test dzialania wszystkiego :) 
