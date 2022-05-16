@@ -15,7 +15,8 @@ class Student{
             std::string pesel,
             Gender gender);
     
-    std::string show() const;
+            std::string show() const;
+            std::string getlastName() const { return lastName_; }
     private:
             std::string name_;
             std::string lastName_;
