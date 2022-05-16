@@ -31,3 +31,16 @@ std::string Database::findLastName(std::string lastName) const
     }
     return result;
 }
+
+std::string Database::findPesel(std::string pesel)const
+{
+    std::string result = "";
+    for(auto && student :students_)
+    {
+        if(pesel == student.getPesel())
+        {
+            result += student.show();
+        }
+    }
+    return result;
+}

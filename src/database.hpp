@@ -7,6 +7,7 @@ class Database {
         void display() const;
         std::string show() const;
         std::string findLastName(std::string lastName) const;
+        std::string findPesel(std::string pesel) const;
     private:
         std::vector<Student> students_;
 };
