@@ -21,8 +21,9 @@ TEST(CheckStructrue, CanAddStudentToDb_Req1_Req2) {
 TEST(DisplayDb, DisplayEmptyDB){
 
     Database db;
-    db.display();
-
+    auto content = db.show();
+    auto expected = "";
+    EXPECT_EQ(content,expected);
 }
 
 // TEST(DisplayDb, DisplayNonEmptyDB){
@@ -43,4 +44,4 @@ TEST(DisplayDb, DisplayEmptyDB){
 //     db.display();
 
 // }
-}
+
