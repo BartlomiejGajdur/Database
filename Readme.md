@@ -1,6 +1,6 @@
-Test dzialania wszystkiego :) 
+!Database!
 
-Wymagania (16 XP):
+Wymagania:
 
 1. Przechowywanie rekordów studentów o strukturze: Imię, nazwisko, adres, nr indeksu, PESEL, płeć
 2. Dodawanie nowych studentów
