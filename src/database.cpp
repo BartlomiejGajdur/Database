@@ -1,5 +1,5 @@
 #include "database.hpp"
-#include <iostream>
+
 void Database::add(const Student &s)
 {
     students_.push_back(s);
@@ -43,4 +43,10 @@ std::string Database::findPesel(std::string pesel)const
         }
     }
     return result;
+}
+
+void Database::sortBySurname()
+{
+    sort(students_.begin(),students_.end(),[](auto l, auto r)
+    {return l.getlastName() < r.getlastName(); });
 }

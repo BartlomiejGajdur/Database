@@ -24,12 +24,21 @@ TEST(DisplayDb, DisplayNonEmptyDB){
         "00110103033",
         Gender::Male 
         };
+        Student maciek{
+        "Adam",
+        "Kowalski",
+        "ul. Dobra 134, 00-200 Warszawa",
+        123456,
+        "00110103033",
+        Gender::Male 
+        };
 
     db.add(adam);
+    db.add(maciek);
     // check adding the same person twice
 
     auto content = db.show();
-    auto expected = "Adam Kowalski; ul. Dobra 134, 00-200 Warszawa; 123456; 00110103033; Male\n";
+    auto expected = "Adam Kowalski; ul. Dobra 134, 00-200 Warszawa; 123456; 00110103033; Male\nAdam Kowalski; ul. Dobra 134, 00-200 Warszawa; 123456; 00110103033; Male\n";
     EXPECT_EQ(content,expected);
 
 }
@@ -107,4 +116,36 @@ TEST(FindPesel, SerchForPesel)
     auto content = db.findPesel("22222222222");
     auto expected = "Maciek Maruda; ul. cos 134, 00-200 Krakow; 234567; 22222222222; Male\n";
     EXPECT_EQ(content,expected);
+}
+
+TEST(SortLastName, SortByLastName)
+{
+     Database db;
+
+    Student adam{
+        "Adam",
+        "Bwulski",
+        "ul. Dobra 134, 00-200 Warszawa",
+        123456,
+        "00110103033",
+        Gender::Male 
+        };
+        Student maciek{
+        "Maciek",
+        "Asinski",
+        "ul. Dobra 134, 00-200 Warszawa",
+        123456,
+        "00110103033",
+        Gender::Male 
+        };
+
+    db.add(adam);
+    db.add(maciek);
+    // check adding the same person twice
+    db.sortBySurname();
+    auto content = db.show();
+    auto expected = "Maciek Asinski; ul. Dobra 134, 00-200 Warszawa; 123456; 00110103033; Male\nAdam Bwulski; ul. Dobra 134, 00-200 Warszawa; 123456; 00110103033; Male\n";
+    EXPECT_EQ(content,expected);
+
+    
 }

@@ -1,6 +1,8 @@
 #pragma once
 #include "student.hpp"
 #include <vector>
+#include <iostream>
+#include <algorithm>
 class Database {
     public:
         void add(const Student& s);
@@ -8,6 +10,7 @@ class Database {
         std::string show() const;
         std::string findLastName(std::string lastName) const;
         std::string findPesel(std::string pesel) const;
+        void sortBySurname();
     private:
         std::vector<Student> students_;
 };
