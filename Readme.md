@@ -1,15 +1,16 @@
 
 <p align="center">
-  # !Database!
+  
+  ## !Database!
 
-Wymagania:
+**Wymagania:**
 
-* 1.  Przechowywanie rekordów studentów o strukturze: Imię, nazwisko, adres, nr indeksu, PESEL, płeć
-* 2. Dodawanie nowych studentów
-* 3. Wyświetlanie całej bazy danych
-* 4. Wyszukiwanie po nazwisku
-* 5. Wyszukiwanie po numerze PESEL
-* 6. Sortowanie po nazwisku
-* 7. Sortowanie po numerze PESEL
-* 8. Usuwanie po numerze indeksu
+*  Przechowywanie rekordów studentów o strukturze: Imię, nazwisko, adres, nr indeksu, PESEL, płeć
+*  Dodawanie nowych studentów
+*  Wyświetlanie całej bazy danych
+*  Wyszukiwanie po nazwisku
+*  Wyszukiwanie po numerze PESEL
+*  Sortowanie po nazwisku
+*  Sortowanie po numerze PESEL
+*  Usuwanie po numerze indeksu
 </p>
