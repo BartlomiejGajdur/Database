@@ -26,7 +26,7 @@ std::string Database::findLastName(std::string lastName) const
     {
         if(lastName == student.getlastName())
         {
-            result = student.show();
+            result += student.show();
         }
     }
     return result;
