@@ -13,4 +13,6 @@
 *  Sortowanie po nazwisku
 *  Sortowanie po numerze PESEL
 *  Usuwanie po numerze indeksu
+
+
 </p>
