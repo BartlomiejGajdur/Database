@@ -2,8 +2,20 @@
 #include "database.hpp"
 #include "student.hpp"
 
+TEST(DisplayDb, DisplayEmptyDB){
 
-TEST(CheckStructrue, CanAddStudentToDb_Req1_Req2) {
+    Database db;
+    auto content = db.show();
+    auto expected = "";
+    EXPECT_EQ(content,expected);
+
+
+}
+
+TEST(DisplayDb, DisplayNonEmptyDB){
+
+    Database db;
+
     Student adam{
         "Adam",
         "Kowalski",
@@ -13,35 +25,12 @@ TEST(CheckStructrue, CanAddStudentToDb_Req1_Req2) {
         Gender::Male 
         };
 
-        Database db;
-        EXPECT_TRUE(db.add(adam));
-        EXPECT_FALSE(db.add(adam));
-}
+    db.add(adam);
+    // check adding the same person twice
 
-TEST(DisplayDb, DisplayEmptyDB){
-
-    Database db;
     auto content = db.show();
-    auto expected = "";
+    auto expected = "Adam Kowalski; ul. Dobra 134, 00-200 Warszawa; 123456; 00110103033; Male";
     EXPECT_EQ(content,expected);
+
 }
-
-// TEST(DisplayDb, DisplayNonEmptyDB){
-
-//     Database db;
-
-//     Student adam{
-//         "Adam",
-//         "Kowalski",
-//         "ul. Dobra 134, 00-200 Warszawa",
-//         123456,
-//         "00110103033",
-//         Gender::Male 
-//         };
-
-//     EXPECT_TRUE(db.add(adam));
-
-//     db.display();
-
-// }
 
