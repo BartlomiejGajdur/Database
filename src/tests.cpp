@@ -213,3 +213,26 @@ TEST(Eraseing, DeleteStudentByIndexNumber)
 
     
 }
+
+TEST(Gender, ShowingProperlyGender)
+{
+     Database db;
+
+    Student Kasia{
+        "Kasia",
+        "Markowska",
+        "ul. Dobra 134, 00-200 Warszawa",
+        123456,
+        "01",
+        Gender::Female 
+        };
+        
+
+    db.add(Kasia);
+
+    auto content = db.show();
+    auto expected = "Kasia Markowska; ul. Dobra 134, 00-200 Warszawa; 123456; 01; Female\n";
+    EXPECT_EQ(content,expected);
+
+    
+}

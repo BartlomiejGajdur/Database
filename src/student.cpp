@@ -19,5 +19,5 @@ Student::Student(
 std::string Student::show() const
 {
     return name_ + " " + lastName_ + "; "+address_+"; "
-    + std::to_string(indexNumber_) + "; "+pesel_+ "; "+"Male"+"\n";
+    + std::to_string(indexNumber_) + "; "+pesel_+ "; "+genderPrint.at(getGender())+"\n";
 }
