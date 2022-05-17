@@ -1,7 +1,7 @@
 
 <p align="center">
   
-  ## !Database!
+  ## Database
 
 **Wymagania:**
 
@@ -14,5 +14,10 @@
 *  Sortowanie po numerze PESEL
 *  Usuwanie po numerze indeksu
 
+**Dodatkowe wymagania:**
+
+* Walidacja czy numer PESEL jest poprawny 
+* Wczytywanie z pliku i zapisywanie całej bazy w pliku
+* Generowanie randomowej bazy danych (1-100)
 
 </p>
