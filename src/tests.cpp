@@ -149,3 +149,35 @@ TEST(SortLastName, SortByLastName)
 
     
 }
+
+TEST(SortPesel, SortByPesel)
+{
+     Database db;
+
+    Student adam{
+        "Adam",
+        "Bwulski",
+        "ul. Dobra 134, 00-200 Warszawa",
+        123456,
+        "00110103033",
+        Gender::Male 
+        };
+        Student maciek{
+        "Maciek",
+        "Asinski",
+        "ul. Dobra 134, 00-200 Warszawa",
+        123456,
+        "00110103031",
+        Gender::Male 
+        };
+
+    db.add(adam);
+    db.add(maciek);
+    
+    db.sortByPesel();
+    auto content = db.show();
+    auto expected = "Maciek Asinski; ul. Dobra 134, 00-200 Warszawa; 123456; 00110103031; Male\nAdam Bwulski; ul. Dobra 134, 00-200 Warszawa; 123456; 00110103033; Male\n";
+    EXPECT_EQ(content,expected);
+
+    
+}

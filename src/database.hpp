@@ -11,6 +11,8 @@ class Database {
         std::string findLastName(std::string lastName) const;
         std::string findPesel(std::string pesel) const;
         void sortBySurname();
+        void sortByPesel();
+        
     private:
         std::vector<Student> students_;
 };

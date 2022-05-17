@@ -50,3 +50,10 @@ void Database::sortBySurname()
     sort(students_.begin(),students_.end(),[](auto l, auto r)
     {return l.getlastName() < r.getlastName(); });
 }
+
+void Database::sortByPesel()
+{
+    sort(begin(students_), end(students_),[] (auto l, auto r)
+        {return l.getPesel() < r.getPesel();});
+}
+

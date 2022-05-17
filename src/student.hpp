@@ -8,9 +8,9 @@ enum class Gender{
 
 // std::string operator+(Gender gender_)
 // {
-//     if(gender_==Male)
+//     if(gender_== Gender::Male)
 //         return "Male";
-//     if(gender_==Female)
+//     if(gender_==Gender::Female)
 //         return "Female";
 // }
 class Student{
@@ -25,6 +25,7 @@ class Student{
             std::string show() const;
             std::string getlastName() const { return lastName_; }
             std::string getPesel() const { return pesel_;}
+            int getindexNumber() const {return indexNumber_; }
             Gender getGender() const {return gender_;}
     private:
             std::string name_;
