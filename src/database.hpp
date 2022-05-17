@@ -12,7 +12,7 @@ class Database {
         std::string findPesel(std::string pesel) const;
         void sortBySurname();
         void sortByPesel();
-        
+        void deleteByIndexNumber(const int&);
     private:
         std::vector<Student> students_;
 };

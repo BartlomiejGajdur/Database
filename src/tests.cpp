@@ -181,3 +181,35 @@ TEST(SortPesel, SortByPesel)
 
     
 }
+
+TEST(Eraseing, DeleteStudentByIndexNumber)
+{
+     Database db;
+
+    Student adam{
+        "Adam",
+        "Bwulski",
+        "ul. Dobra 134, 00-200 Warszawa",
+        123456,
+        "01",
+        Gender::Male 
+        };
+        Student maciek{
+        "Maciek",
+        "Asinski",
+        "ul. Dobra 134, 00-200 Warszawa",
+        1234567,
+        "00110103031",
+        Gender::Male 
+        };
+
+    db.add(adam);
+    db.add(maciek);
+    
+    db.deleteByIndexNumber(123456);
+    auto content = db.show();
+    auto expected = "Maciek Asinski; ul. Dobra 134, 00-200 Warszawa; 1234567; 00110103031; Male\n";
+    EXPECT_EQ(content,expected);
+
+    
+}

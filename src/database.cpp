@@ -57,3 +57,16 @@ void Database::sortByPesel()
         {return l.getPesel() < r.getPesel();});
 }
 
+void Database::deleteByIndexNumber(const int& index)
+{
+    auto it = students_.begin();
+    for(auto && students : students_)
+    {
+        if(students.getindexNumber() == index)
+        {
+            students_.erase(it);
+        }
+        it++;
+    }
+
+}
