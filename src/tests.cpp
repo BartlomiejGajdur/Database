@@ -22,7 +22,7 @@ TEST(DisplayDb, DisplayNonEmptyDB){
         "Kowalski",
         "ul. Dobra 134, 00-200 Warszawa",
         123456,
-        "00110103033",
+        "99110103633",
         Gender::Male 
         };
         Student maciek{
@@ -30,7 +30,7 @@ TEST(DisplayDb, DisplayNonEmptyDB){
         "Kowalski",
         "ul. Dobra 134, 00-200 Warszawa",
         123456,
-        "00110103033",
+        "99110103633",
         Gender::Male 
         };
 
@@ -39,7 +39,7 @@ TEST(DisplayDb, DisplayNonEmptyDB){
     // check adding the same person twice
 
     auto content = db.show();
-    auto expected = "Adam Kowalski; ul. Dobra 134, 00-200 Warszawa; 123456; 00110103033; Male\nAdam Kowalski; ul. Dobra 134, 00-200 Warszawa; 123456; 00110103033; Male\n";
+    auto expected = "Adam Kowalski; ul. Dobra 134, 00-200 Warszawa; 123456; 99110103633; Male\nAdam Kowalski; ul. Dobra 134, 00-200 Warszawa; 123456; 99110103633; Male\n";
     EXPECT_EQ(content,expected);
 
 }
@@ -52,7 +52,7 @@ TEST(FindLastName, SerchLastNameWhenIsMoreThan1)
         "Maruda",
         "ul. Dobra 134, 00-200 Warszawa",
         123456,
-        "00110103033",
+        "99110103633",
         Gender::Male 
         };
     Student maciek{
@@ -60,7 +60,7 @@ TEST(FindLastName, SerchLastNameWhenIsMoreThan1)
         "Maruda",
         "ul. cos 134, 00-200 Krakow",
         234567,
-        "2313331233",
+        "99110103633",
         Gender::Male 
         };
     Student Kacper{
@@ -68,7 +68,7 @@ TEST(FindLastName, SerchLastNameWhenIsMoreThan1)
         "Kacperski",
         "ul. Dobra 134, 00-200 Warszawa",
         123456,
-        "00110103033",
+        "99110103633",
         Gender::Male 
         };
 
@@ -78,7 +78,7 @@ TEST(FindLastName, SerchLastNameWhenIsMoreThan1)
 
     
     auto content = db.findLastName("Maruda");
-    auto expected = "Adam Maruda; ul. Dobra 134, 00-200 Warszawa; 123456; 00110103033; Male\nMaciek Maruda; ul. cos 134, 00-200 Krakow; 234567; 2313331233; Male\n";
+    auto expected = "Adam Maruda; ul. Dobra 134, 00-200 Warszawa; 123456; 99110103633; Male\nMaciek Maruda; ul. cos 134, 00-200 Krakow; 234567; 99110103633; Male\n";
     EXPECT_EQ(content,expected);
 }
 
@@ -98,7 +98,7 @@ TEST(FindPesel, SerchForPesel)
         "Maruda",
         "ul. cos 134, 00-200 Krakow",
         234567,
-        "22222222222",
+        "99110103633",
         Gender::Male 
         };
     Student Kacper{
@@ -114,8 +114,8 @@ TEST(FindPesel, SerchForPesel)
     db.add(maciek);
     db.add(Kacper);
 
-    auto content = db.findPesel("22222222222");
-    auto expected = "Maciek Maruda; ul. cos 134, 00-200 Krakow; 234567; 22222222222; Male\n";
+    auto content = db.findPesel("99110103633");
+    auto expected = "Maciek Maruda; ul. cos 134, 00-200 Krakow; 234567; 99110103633; Male\n";
     EXPECT_EQ(content,expected);
 }
 
@@ -128,7 +128,7 @@ TEST(SortLastName, SortByLastName)
         "Bwulski",
         "ul. Dobra 134, 00-200 Warszawa",
         123456,
-        "00110103033",
+        "99110103633",
         Gender::Male 
         };
         Student maciek{
@@ -136,7 +136,7 @@ TEST(SortLastName, SortByLastName)
         "Asinski",
         "ul. Dobra 134, 00-200 Warszawa",
         123456,
-        "00110103033",
+        "99110103633",
         Gender::Male 
         };
 
@@ -145,7 +145,7 @@ TEST(SortLastName, SortByLastName)
     // check adding the same person twice
     db.sortBySurname();
     auto content = db.show();
-    auto expected = "Maciek Asinski; ul. Dobra 134, 00-200 Warszawa; 123456; 00110103033; Male\nAdam Bwulski; ul. Dobra 134, 00-200 Warszawa; 123456; 00110103033; Male\n";
+    auto expected = "Maciek Asinski; ul. Dobra 134, 00-200 Warszawa; 123456; 99110103633; Male\nAdam Bwulski; ul. Dobra 134, 00-200 Warszawa; 123456; 99110103633; Male\n";
     EXPECT_EQ(content,expected);
 
     
@@ -160,7 +160,7 @@ TEST(SortPesel, SortByPesel)
         "Bwulski",
         "ul. Dobra 134, 00-200 Warszawa",
         123456,
-        "00110103033",
+        "99110103633",
         Gender::Male 
         };
         Student maciek{
@@ -168,7 +168,7 @@ TEST(SortPesel, SortByPesel)
         "Asinski",
         "ul. Dobra 134, 00-200 Warszawa",
         123456,
-        "00110103031",
+        "99110103633",
         Gender::Male 
         };
 
@@ -177,7 +177,7 @@ TEST(SortPesel, SortByPesel)
     
     db.sortByPesel();
     auto content = db.show();
-    auto expected = "Maciek Asinski; ul. Dobra 134, 00-200 Warszawa; 123456; 00110103031; Male\nAdam Bwulski; ul. Dobra 134, 00-200 Warszawa; 123456; 00110103033; Male\n";
+    auto expected = "Adam Bwulski; ul. Dobra 134, 00-200 Warszawa; 123456; 99110103633; Male\nMaciek Asinski; ul. Dobra 134, 00-200 Warszawa; 123456; 99110103633; Male\n";
     EXPECT_EQ(content,expected);
 
     
@@ -224,7 +224,7 @@ TEST(Gender, ShowingProperlyGender)
         "Markowska",
         "ul. Dobra 134, 00-200 Warszawa",
         123456,
-        "01",
+        "01010101011",
         Gender::Female 
         };
         
@@ -232,7 +232,7 @@ TEST(Gender, ShowingProperlyGender)
     db.add(Kasia);
 
     auto content = db.show();
-    auto expected = "Kasia Markowska; ul. Dobra 134, 00-200 Warszawa; 123456; 01; Female\n";
+    auto expected = "Kasia Markowska; ul. Dobra 134, 00-200 Warszawa; 123456; 01010101011; Female\n";
     EXPECT_EQ(content,expected);
 
     
@@ -242,7 +242,7 @@ TEST(Pesel, validatePeselSize)
 {
     PESELvalidation pesel1;
 
-    EXPECT_TRUE(pesel1.validatePESELsize("12345678909"));
-    EXPECT_FALSE(pesel1.validatePESELsize("1234"));
+    EXPECT_TRUE(pesel1.validatePESEL("99110103633"));
+    EXPECT_FALSE(pesel1.validatePESEL("1234"));
 
 }

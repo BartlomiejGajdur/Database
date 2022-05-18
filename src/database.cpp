@@ -1,8 +1,13 @@
 #include "database.hpp"
+#include "PESELvalidation.hpp"
 
 void Database::add(const Student &s)
 {
-    students_.push_back(s);
+
+   // PESELvalidation pesel;
+    
+   // if(pesel.validatePESEL(s.getPesel())== true)
+        students_.push_back(s);
 
 }
 

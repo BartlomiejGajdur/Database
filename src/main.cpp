@@ -19,6 +19,7 @@ int main(){
     db.add(bd);
     db.add(jp);
 
+
     std::cout<<db.show();
     std::cout<<std::endl<<std::endl;
     db.sortBySurname();
@@ -34,7 +35,10 @@ int main(){
     
     std::string a = "12345678912";
 
-    std::cout<<a.size();
-    
+    std::cout<<a.size()<<std::endl;
+    std::cout<<std::stoi("02")<<std::endl;
+
+    PESELvalidation p;
+    std::cout<<p.validatePESEL("99110103633");
     return 0;
 }
