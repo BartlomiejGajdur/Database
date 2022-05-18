@@ -7,27 +7,6 @@ enum class Gender{
     Female
 };
 
-// //Sposob pierwszy przy uzyciu ostream
-// std::ostream& operator+(Gender gender_,std::ostream& jakis)
-// {
-//     switch(gender_)
-//     {
-//         case Gender::Male   : jakis<<"Male";     break;
-//         case Gender::Female : jakis<<"Female";   break;
-//     }
-//     return jakis;
-// }
-// //Sposob drugi zwykly string
-// std::string operator+(Gender gender_)
-// {
-//     if(gender_== Gender::Male)
-//         return "Male";
-//     if(gender_==Gender::Female)
-//         return "Female";
-// }
-
-
-
 
 class Student{
     public:

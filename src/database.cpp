@@ -3,12 +3,7 @@
 
 void Database::add(const Student &s)
 {
-
-   // PESELvalidation pesel;
-    
-   // if(pesel.validatePESEL(s.getPesel())== true)
         students_.push_back(s);
-
 }
 
 void Database::display() const 
