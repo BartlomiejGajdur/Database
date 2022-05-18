@@ -1,14 +1,9 @@
 #include "database.hpp"
-#include "PESELvalidation.hpp"
+
 
 void Database::add(const Student &s)
 {
-
-   // PESELvalidation pesel;
-    
-   // if(pesel.validatePESEL(s.getPesel())== true)
         students_.push_back(s);
-
 }
 
 void Database::display() const 
@@ -74,4 +69,57 @@ void Database::deleteByIndexNumber(const int& index)
         it++;
     }
 
+}
+
+
+
+void Database::mainMenu() const
+{   
+    system("clear");
+    std::cout<<"===================================\n";
+    std::cout<<"1. Add student\n";
+    std::cout<<"2. Show all students\n";
+    std::cout<<"3. Find students by surname\n";
+    std::cout<<"4. Find students by Pesel\n";
+    std::cout<<"5. Sort students by surname\n";
+    std::cout<<"6. Sort students by Pesel\n";
+    std::cout<<"7. Remove student by index number\n";
+    std::cout<<"8. Check pesel\n";
+    std::cout<<"===================================\n";
+    std::cout<<"Insert a number between 1-9 and click enter: \n";
+}
+
+void Database::chooseFromMenu()
+{
+    mainMenu();
+    int choose;
+    std::cin>>choose;
+    PESELvalidation pesel1;
+    std::string zmienna;
+
+    switch(choose)
+    {
+        case 1:
+            break;
+        case 2:
+            break;
+        case 3:
+            break;
+        case 4:
+            break;
+        case 5:
+            break;
+        case 6:
+            break;
+        case 7:
+            break;
+        case 8:
+        system("clear");
+        std::cin>>zmienna;
+        std::cout<<pesel1.validatePESEL(zmienna);
+            break;
+        default:
+            std::cout<<"Choose a noumber [1-8] and click ENTER";
+            break;
+    }
 }

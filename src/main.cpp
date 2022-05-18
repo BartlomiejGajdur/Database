@@ -2,6 +2,7 @@
 #include "student.hpp"
 #include "database.hpp"
 #include "PESELvalidation.hpp"
+#include "menu.hpp"
 #include <string>
 
 int main(){
@@ -20,25 +21,21 @@ int main(){
     db.add(jp);
 
 
-    std::cout<<db.show();
-    std::cout<<std::endl<<std::endl;
-    db.sortBySurname();
-    std::cout<<db.show();
-    std::cout<<std::endl<<std::endl;
-    std::cout<<db.findLastName("Drab");
-    std::cout<<std::endl<<std::endl;
-    std::cout<<db.findPesel("111");
-
-
-    std::cout<<"Hello, World! ";
-    std::cout<<std::endl;
+    // std::cout<<db.show();
+    // std::cout<<std::endl<<std::endl;
+    // db.sortBySurname();
+    // std::cout<<db.show();
+    // std::cout<<std::endl<<std::endl;
+    // std::cout<<db.findLastName("Drab");
+    // std::cout<<std::endl<<std::endl;
+    // std::cout<<db.findPesel("111");
     
-    std::string a = "12345678912";
+    while (true)
+    {
+        menu m;
+        m.chooseFromMenu(); 
+    }
+    
 
-    std::cout<<a.size()<<std::endl;
-    std::cout<<std::stoi("02")<<std::endl;
-
-    PESELvalidation p;
-    std::cout<<p.validatePESEL("99110103633");
     return 0;
 }

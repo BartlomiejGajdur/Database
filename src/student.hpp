@@ -1,48 +1,33 @@
 #pragma once
 #include <string>
 #include <map>
+#include <iostream>
+#include <ostream>
+#include <sstream>
 
 enum class Gender{
     Male,
     Female
 };
 
-// //Sposob pierwszy przy uzyciu ostream
-// std::ostream& operator+(Gender gender_,std::ostream& jakis)
-// {
-//     switch(gender_)
-//     {
-//         case Gender::Male   : jakis<<"Male";     break;
-//         case Gender::Female : jakis<<"Female";   break;
-//     }
-//     return jakis;
-// }
-// //Sposob drugi zwykly string
-// std::string operator+(Gender gender_)
-// {
-//     if(gender_== Gender::Male)
-//         return "Male";
-//     if(gender_==Gender::Female)
-//         return "Female";
-// }
-
-
-
 
 class Student{
     public:
-    Student(std::string name,
-            std::string lastName,
-            std::string address,
-            int indexNumber,
-            std::string pesel,
+    Student(const std::string& name,
+            const std::string& lastName,
+            const std::string& address,
+            const int& indexNumber,
+            const std::string& pesel,
             Gender gender);
     
             std::string show() const;
+            Student enterData();
             std::string getlastName() const { return lastName_; }
             std::string getPesel() const { return pesel_;}
             int getindexNumber() const {return indexNumber_; }
             Gender getGender() const {return gender_;}
+            std::string GenderToString(Gender gender);
+            void setName(std::string name) {name_ = name;}
 
             std::map<Gender, std::string> genderPrint{{Gender::Female,"Female"}, {Gender::Male,"Male"}};
     private:
