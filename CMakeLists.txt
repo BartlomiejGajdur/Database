@@ -7,6 +7,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(SOURCES
 src/database.cpp 
 src/student.cpp
+src/PESELvalidation.cpp
     )
 set(FLAGS -Wall -Wextra -Wpedantic -Werror -std=c++20)
 
