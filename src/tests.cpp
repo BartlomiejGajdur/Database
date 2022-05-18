@@ -1,6 +1,7 @@
 #include <gtest/gtest.h>
 #include "database.hpp"
 #include "student.hpp"
+#include "PESELvalidation.hpp"
 
 TEST(DisplayDb, DisplayEmptyDB){
 
@@ -235,4 +236,13 @@ TEST(Gender, ShowingProperlyGender)
     EXPECT_EQ(content,expected);
 
     
+}
+
+TEST(Pesel, validatePeselSize)
+{
+    PESELvalidation pesel1;
+
+    EXPECT_TRUE(pesel1.validatePESELsize("12345678909"));
+    EXPECT_FALSE(pesel1.validatePESELsize("1234"));
+
 }

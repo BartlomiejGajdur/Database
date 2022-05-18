@@ -1,7 +1,8 @@
 #include <iostream>
 #include "student.hpp"
 #include "database.hpp"
-
+#include "PESELvalidation.hpp"
+#include <string>
 
 int main(){
 
@@ -31,6 +32,9 @@ int main(){
     std::cout<<"Hello, World! ";
     std::cout<<std::endl;
     
+    std::string a = "12345678912";
 
+    std::cout<<a.size();
+    
     return 0;
 }
