@@ -1,6 +1,6 @@
 #include "menu.hpp"
 
-
+/*
 void menu::mainMenu() const
 {   
     system("clear");
@@ -47,3 +47,4 @@ void menu::chooseFromMenu() const
             break;
     }
 }
+*/
