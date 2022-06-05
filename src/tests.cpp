@@ -6,7 +6,7 @@
 struct DatabaseTest: ::testing::Test
 {
     Database db;
-    Student adam{
+    Student Adam{
         "Adam",
         "Kowalski",
         "ul. Dobra 134, 00-200 Warszawa",
@@ -14,7 +14,7 @@ struct DatabaseTest: ::testing::Test
         Gender::Male,
         "123456"
         };
-        Student maciek{
+    Student Maciek{
         "Adam",
         "Kowalski",
         "ul. Dobra 134, 00-200 Warszawa",
@@ -22,6 +22,22 @@ struct DatabaseTest: ::testing::Test
         Gender::Male,
         "123456"
         };
+    Student Kacper{
+        "Adam",
+        "Maruda",
+        "ul. Dobra 134, 00-200 Warszawa",
+        "99110103633",
+        Gender::Male,
+        "123456"
+    };
+    Student Krzysiek{
+        "Maciek",
+        "Maruda",
+        "ul. cos 134, 00-200 Krakow",
+        "99110103633",
+        Gender::Male,
+        "234567"  
+    };
 };
 
 TEST_F(DatabaseTest, DisplayEmptyDB){
@@ -36,8 +52,8 @@ TEST_F(DatabaseTest, DisplayEmptyDB){
 
 TEST_F(DatabaseTest, DisplayNonEmptyDB){
 
-    db.add(adam);
-    db.add(maciek);
+    db.add(Adam);
+    db.add(Maciek);
     // check adding the same person twice
 
     auto content = db.show();
@@ -46,43 +62,17 @@ TEST_F(DatabaseTest, DisplayNonEmptyDB){
 
 }
 
-// TEST(DatabaseTest, SerchLastNameWhenIsMoreThan1)
-// {
-//     Database db;
-//     Student adam{
-//         "Adam",
-//         "Maruda",
-//         "ul. Dobra 134, 00-200 Warszawa",
-//         123456,
-//         "99110103633",
-//         Gender::Male 
-//         };
-//     Student maciek{
-//         "Maciek",
-//         "Maruda",
-//         "ul. cos 134, 00-200 Krakow",
-//         234567,
-//         "99110103633",
-//         Gender::Male 
-//         };
-//     Student Kacper{
-//         "Kacper",
-//         "Kacperski",
-//         "ul. Dobra 134, 00-200 Warszawa",
-//         123456,
-//         "99110103633",
-//         Gender::Male 
-//         };
-
-//     db.add(adam);
-//     db.add(maciek);
-//     db.add(Kacper);
+TEST_F(DatabaseTest, SerchLastNameWhenIsMoreThan1)
+{
+    db.add(Adam);
+    db.add(Kacper);
+    db.add(Krzysiek);
 
     
-//     auto content = db.findLastName("Maruda");
-//     auto expected = "Adam Maruda; ul. Dobra 134, 00-200 Warszawa; 123456; 99110103633; Male\nMaciek Maruda; ul. cos 134, 00-200 Krakow; 234567; 99110103633; Male\n";
-//     EXPECT_EQ(content,expected);
-// }
+    auto content = db.findLastName("Maruda");
+    auto expected = "Adam Maruda; ul. Dobra 134, 00-200 Warszawa; 123456; 99110103633; Male\nMaciek Maruda; ul. cos 134, 00-200 Krakow; 234567; 99110103633; Male\n";
+    EXPECT_EQ(content,expected);
+}
 
 // TEST(DatabaseTest, SerchForPesel)
 // {
