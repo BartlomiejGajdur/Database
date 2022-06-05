@@ -1,50 +1,52 @@
-// #include <gtest/gtest.h>
-// #include "database.hpp"
-// #include "record.hpp"
-// #include "PESELvalidation.hpp"
+#include <gtest/gtest.h>
+#include "database.hpp"
+#include "record.hpp"
+#include "PESELvalidation.hpp"
 
-// TEST(DisplayDb, DisplayEmptyDB){
+struct DatabaseTest: ::testing::Test
+{
+    Database db;
+    Student adam{
+        "Adam",
+        "Kowalski",
+        "ul. Dobra 134, 00-200 Warszawa",
+        "99110103633",
+        Gender::Male,
+        "123456"
+        };
+        Student maciek{
+        "Adam",
+        "Kowalski",
+        "ul. Dobra 134, 00-200 Warszawa",
+        "99110103633",
+        Gender::Male,
+        "123456"
+        };
+};
 
-//     Database db;
-//     auto content = db.show();
-//     auto expected = "";
-//     EXPECT_EQ(content,expected);
+TEST_F(DatabaseTest, DisplayEmptyDB){
+
+    
+    auto content = db.show();
+    auto expected = "";
+    EXPECT_EQ(content,expected);
 
 
-// }
+ }
 
-// TEST(DisplayDb, DisplayNonEmptyDB){
+TEST_F(DatabaseTest, DisplayNonEmptyDB){
 
-//     Database db;
+    db.add(adam);
+    db.add(maciek);
+    // check adding the same person twice
 
-//     Student adam{
-//         "Adam",
-//         "Kowalski",
-//         "ul. Dobra 134, 00-200 Warszawa",
-//         123456,
-//         "99110103633",
-//         Gender::Male 
-//         };
-//         Student maciek{
-//         "Adam",
-//         "Kowalski",
-//         "ul. Dobra 134, 00-200 Warszawa",
-//         123456,
-//         "99110103633",
-//         Gender::Male 
-//         };
+    auto content = db.show();
+    auto expected = "Adam Kowalski; ul. Dobra 134, 00-200 Warszawa; 123456; 99110103633; Male\nAdam Kowalski; ul. Dobra 134, 00-200 Warszawa; 123456; 99110103633; Male\n";
+    EXPECT_EQ(content,expected);
 
-//     db.add(adam);
-//     db.add(maciek);
-//     // check adding the same person twice
+}
 
-//     auto content = db.show();
-//     auto expected = "Adam Kowalski; ul. Dobra 134, 00-200 Warszawa; 123456; 99110103633; Male\nAdam Kowalski; ul. Dobra 134, 00-200 Warszawa; 123456; 99110103633; Male\n";
-//     EXPECT_EQ(content,expected);
-
-// }
-
-// TEST(FindLastName, SerchLastNameWhenIsMoreThan1)
+// TEST(DatabaseTest, SerchLastNameWhenIsMoreThan1)
 // {
 //     Database db;
 //     Student adam{
@@ -82,7 +84,7 @@
 //     EXPECT_EQ(content,expected);
 // }
 
-// TEST(FindPesel, SerchForPesel)
+// TEST(DatabaseTest, SerchForPesel)
 // {
 //      Database db;
 //     Student adam{
