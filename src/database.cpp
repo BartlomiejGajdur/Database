@@ -24,7 +24,7 @@ std::string Database::findLastName(std::string lastName) const
     std::string result = "";
     for(auto && student :students_)
     {
-        if(lastName == student.getlastName())
+        if(lastName == student.getSurname())
         {
             result += student.show();
         }
@@ -48,7 +48,7 @@ std::string Database::findPesel(std::string pesel)const
 void Database::sortBySurname()
 {
     sort(students_.begin(),students_.end(),[](auto l, auto r)
-    {return l.getlastName() < r.getlastName(); });
+    {return l.getSurname() < r.getSurname(); });
 }
 
 void Database::sortByPesel()
@@ -57,7 +57,7 @@ void Database::sortByPesel()
         {return l.getPesel() < r.getPesel();});
 }
 
-void Database::deleteByIndexNumber(const int& index)
+void Database::deleteByIndexNumber(const std::string& index)
 {
     auto it = students_.begin();
     for(auto && students : students_)
