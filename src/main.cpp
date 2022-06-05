@@ -21,21 +21,14 @@ int main(){
     db.add(jp);
 
 
-    // std::cout<<db.show();
-    // std::cout<<std::endl<<std::endl;
-    // db.sortBySurname();
-    // std::cout<<db.show();
-    // std::cout<<std::endl<<std::endl;
-    // std::cout<<db.findLastName("Drab");
-    // std::cout<<std::endl<<std::endl;
-    // std::cout<<db.findPesel("111");
+    std::cout<<db.show();
+    std::cout<<std::endl<<std::endl;
+    db.sortBySurname();
+    std::cout<<db.show();
+    std::cout<<std::endl<<std::endl;
+    std::cout<<db.findLastName("Drab");
+    std::cout<<std::endl<<std::endl;
+    std::cout<<db.findPesel("111");
     
-    while (true)
-    {
-        menu m;
-        m.chooseFromMenu(); 
-    }
-    
-
     return 0;
 }
