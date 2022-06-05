@@ -130,27 +130,21 @@ TEST_F(DatabaseTest, DeleteStudentByIndexNumber)
     
 }
 
-// TEST_F(DatabaseTest, ShowingProperlyGender)
-// {
-//      Database db;
+TEST_F(DatabaseTest, ShowingProperlyGender)
+{
+    db.add(Kasia);
 
-//     
-        
+    auto content = db.show();
+    auto expected = "Kasia Markowska; ul. Dobra 134, 00-200 Warszawa; 123456; 01010101011; Female\n";
+    EXPECT_EQ(content,expected);
+ 
+}
 
-//     db.add(Kasia);
+TEST_F(DatabaseTest, validatePeselSize)
+{
+    PESELvalidation pesel1;
 
-//     auto content = db.show();
-//     auto expected = "Kasia Markowska; ul. Dobra 134, 00-200 Warszawa; 123456; 01010101011; Female\n";
-//     EXPECT_EQ(content,expected);
+    EXPECT_TRUE(pesel1.validatePESEL("99110103633"));
+    EXPECT_FALSE(pesel1.validatePESEL("1234"));
 
-    
-// }
-
-// TEST_F(DatabaseTest, validatePeselSize)
-// {
-//     PESELvalidation pesel1;
-
-//     EXPECT_TRUE(pesel1.validatePESEL("99110103633"));
-//     EXPECT_FALSE(pesel1.validatePESEL("1234"));
-
-// }
+}
