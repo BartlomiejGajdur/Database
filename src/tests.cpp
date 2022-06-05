@@ -63,9 +63,9 @@ TEST_F(DatabaseTest, DisplayNonEmptyDB){
     db.add(Adam);
     db.add(Maciek);
     // check adding the same person twice
-
+    
     auto content = db.show();
-    auto expected = "Adam Kowalski; ul. Dobra 134, 00-200 Warszawa; 123456; 99110103633; Male\nAdam Kowalski; ul. Dobra 134, 00-200 Warszawa; 123456; 99110103633; Male\n";
+    auto expected = "Student: Adam Kowalski; ul. Dobra 134, 00-200 Warszawa; 123456; 99110103633; Male\nStudent: Adam Kowalski; ul. Dobra 134, 00-200 Warszawa; 123456; 99110103633; Male\n";
     EXPECT_EQ(content,expected);
 
 }
@@ -78,7 +78,7 @@ TEST_F(DatabaseTest, SerchLastNameWhenIsMoreThan1)
 
     
     auto content = db.findLastName("Maruda");
-    auto expected = "Adam Maruda; ul. Dobra 134, 00-200 Warszawa; 123456; 99110103633; Male\nMaciek Maruda; ul. cos 134, 00-200 Krakow; 234567; 1111111111; Male\n";
+    auto expected = "Student: Adam Maruda; ul. Dobra 134, 00-200 Warszawa; 123456; 99110103633; Male\nStudent: Maciek Maruda; ul. cos 134, 00-200 Krakow; 234567; 1111111111; Male\n";
     EXPECT_EQ(content,expected);
 }
 
@@ -90,7 +90,7 @@ TEST_F(DatabaseTest, SerchForPesel)
     db.add(Krzysiek);
 
     auto content = db.findPesel("1111111111");
-    auto expected = "Maciek Maruda; ul. cos 134, 00-200 Krakow; 234567; 1111111111; Male\n";
+    auto expected = "Student: Maciek Maruda; ul. cos 134, 00-200 Krakow; 234567; 1111111111; Male\n";
     EXPECT_EQ(content,expected);
 }
 
@@ -101,7 +101,7 @@ TEST_F(DatabaseTest, SortByLastName)
     // check adding the same person twice
     db.sortBySurname();
     auto content = db.show();
-    auto expected = "Adam Kowalski; ul. Dobra 134, 00-200 Warszawa; 123456; 99110103633; Male\nMaciek Maruda; ul. cos 134, 00-200 Krakow; 234567; 1111111111; Male\n";
+    auto expected = "Student: Adam Kowalski; ul. Dobra 134, 00-200 Warszawa; 123456; 99110103633; Male\nStudent: Maciek Maruda; ul. cos 134, 00-200 Krakow; 234567; 1111111111; Male\n";
     EXPECT_EQ(content,expected);   
 }
 
@@ -112,7 +112,7 @@ TEST_F(DatabaseTest, SortByPesel)
     
     db.sortByPesel();
     auto content = db.show();
-    auto expected = "Maciek Maruda; ul. cos 134, 00-200 Krakow; 234567; 1111111111; Male\nAdam Maruda; ul. Dobra 134, 00-200 Warszawa; 123456; 99110103633; Male\n";
+    auto expected = "Student: Maciek Maruda; ul. cos 134, 00-200 Krakow; 234567; 1111111111; Male\nStudent: Adam Maruda; ul. Dobra 134, 00-200 Warszawa; 123456; 99110103633; Male\n";
     EXPECT_EQ(content,expected);
 
  }
@@ -125,32 +125,27 @@ TEST_F(DatabaseTest, DeleteStudentByIndexNumber)
     
     db.deleteByIndexNumber("234567");
     auto content = db.show();
-    auto expected = "Adam Kowalski; ul. Dobra 134, 00-200 Warszawa; 123456; 99110103633; Male\n";
+    auto expected = "Student: Adam Kowalski; ul. Dobra 134, 00-200 Warszawa; 123456; 99110103633; Male\n";
     EXPECT_EQ(content,expected);
     
 }
 
-// TEST_F(DatabaseTest, ShowingProperlyGender)
-// {
-//      Database db;
+TEST_F(DatabaseTest, ShowingProperlyGender)
+{
+    db.add(Kasia);
 
-//     
-        
+    auto content = db.show();
+    auto expected = "Student: Kasia Markowska; ul. Dobra 134, 00-200 Warszawa; 123456; 01010101011; Female\n";
+    EXPECT_EQ(content,expected);
+ 
+}
 
-//     db.add(Kasia);
+TEST_F(DatabaseTest, validatePeselSize)
+{
+    PESELvalidation pesel1;
 
-//     auto content = db.show();
-//     auto expected = "Kasia Markowska; ul. Dobra 134, 00-200 Warszawa; 123456; 01010101011; Female\n";
-//     EXPECT_EQ(content,expected);
+    EXPECT_TRUE(pesel1.validatePESEL("99110103633"));
+    EXPECT_FALSE(pesel1.validatePESEL("1234"));
 
-    
-// }
+}
 
-// TEST_F(DatabaseTest, validatePeselSize)
-// {
-//     PESELvalidation pesel1;
-
-//     EXPECT_TRUE(pesel1.validatePESEL("99110103633"));
-//     EXPECT_FALSE(pesel1.validatePESEL("1234"));
-
-// }
