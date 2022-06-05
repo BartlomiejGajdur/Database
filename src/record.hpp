@@ -40,7 +40,7 @@ Record( Status status,
         std::string getPesel() const {return pesel_;}
         Gender getGender() const {return gender_;}
 
-        //virtual std::string getByStatus() const = 0; // Optional -> IndexNumber for Student / Salary for Employee
+        
 
         //Setters
         void setStatus(Status status){status_=status;}
@@ -54,6 +54,7 @@ Record( Status status,
 
         virtual std::string show() const = 0;
         std::string getGenderString() const;
+        std::string getStatusString() const ; // Optional -> IndexNumber for Student / Salary for Employee
 private:  
     Status status_; 
     std::string name_;
@@ -102,7 +103,7 @@ std::string indexNumber_;
     //         Gender gender);
     
     //         
-    //         Student enterData();
+    //         
     //         
             
     //         std::string GenderToString(Gender gender);
