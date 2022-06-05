@@ -4,6 +4,7 @@
 void Database::add(const Student &s)
 {
         students_.push_back(s);
+        
 }
 
 void Database::display() const 

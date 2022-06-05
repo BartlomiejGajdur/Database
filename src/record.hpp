@@ -52,6 +52,8 @@ Record( Status status,
 
         //virtual void setByStatus(const std::string&) const = 0;
 
+        virtual std::string show() const = 0;
+        std::string getGenderString() const;
 private:  
     Status status_; 
     std::string name_;
@@ -79,7 +81,7 @@ Student(const std::string& name,
         {}
 
 
-        std::string show() const;
+        std::string show() const override;
         std::string getindexNumber() const {return indexNumber_; }
 
 private:
