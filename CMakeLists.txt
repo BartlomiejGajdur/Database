@@ -6,7 +6,7 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(SOURCES
 src/database.cpp 
-src/student.cpp
+src/record.cpp
 src/PESELvalidation.cpp
 src/menu.cpp
     )

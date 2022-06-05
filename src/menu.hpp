@@ -1,6 +1,6 @@
 #include "database.hpp"
 #include <iostream>
-#include "student.hpp"
+#include "record.hpp"
 #include <memory>
 #include <vector>
 

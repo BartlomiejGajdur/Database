@@ -1,5 +1,5 @@
 #pragma once
-#include "student.hpp"
+#include "record.hpp"
 #include <vector>
 #include <iostream>
 #include <algorithm>

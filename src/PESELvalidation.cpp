@@ -1,5 +1,5 @@
 #include "PESELvalidation.hpp"
-#include "student.hpp"
+#include "record.hpp"
 
 bool PESELvalidation::validatePESEL(const std::string &pesel)
 {

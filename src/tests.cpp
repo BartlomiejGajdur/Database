@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
 #include "database.hpp"
-#include "student.hpp"
+#include "record.hpp"
 #include "PESELvalidation.hpp"
 
 TEST(DisplayDb, DisplayEmptyDB){
