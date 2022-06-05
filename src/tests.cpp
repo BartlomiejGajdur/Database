@@ -38,6 +38,14 @@ struct DatabaseTest: ::testing::Test
         Gender::Male,
         "234567"  
     };
+    Student Kasia{
+        "Kasia",
+        "Markowska",
+        "ul. Dobra 134, 00-200 Warszawa",
+        "01010101011",
+        Gender::Female,
+        "123456"
+        };
 };
 
 TEST_F(DatabaseTest, DisplayEmptyDB){
@@ -97,82 +105,36 @@ TEST_F(DatabaseTest, SortByLastName)
     EXPECT_EQ(content,expected);   
 }
 
-// TEST(SortPesel, SortByPesel)
+TEST_F(DatabaseTest, SortByPesel)
+{
+    db.add(Kacper);
+    db.add(Krzysiek);
+    
+    db.sortByPesel();
+    auto content = db.show();
+    auto expected = "Maciek Maruda; ul. cos 134, 00-200 Krakow; 234567; 1111111111; Male\nAdam Maruda; ul. Dobra 134, 00-200 Warszawa; 123456; 99110103633; Male\n";
+    EXPECT_EQ(content,expected);
+
+ }
+
+TEST_F(DatabaseTest, DeleteStudentByIndexNumber)
+{
+     
+    db.add(Krzysiek);
+    db.add(Adam);
+    
+    db.deleteByIndexNumber("234567");
+    auto content = db.show();
+    auto expected = "Adam Kowalski; ul. Dobra 134, 00-200 Warszawa; 123456; 99110103633; Male\n";
+    EXPECT_EQ(content,expected);
+    
+}
+
+// TEST_F(DatabaseTest, ShowingProperlyGender)
 // {
 //      Database db;
 
-//     Student adam{
-//         "Adam",
-//         "Bwulski",
-//         "ul. Dobra 134, 00-200 Warszawa",
-//         123456,
-//         "99110103633",
-//         Gender::Male 
-//         };
-//         Student maciek{
-//         "Maciek",
-//         "Asinski",
-//         "ul. Dobra 134, 00-200 Warszawa",
-//         123456,
-//         "99110103633",
-//         Gender::Male 
-//         };
-
-//     db.add(adam);
-//     db.add(maciek);
-    
-//     db.sortByPesel();
-//     auto content = db.show();
-//     auto expected = "Adam Bwulski; ul. Dobra 134, 00-200 Warszawa; 123456; 99110103633; Male\nMaciek Asinski; ul. Dobra 134, 00-200 Warszawa; 123456; 99110103633; Male\n";
-//     EXPECT_EQ(content,expected);
-
-    
-// }
-
-// TEST(Eraseing, DeleteStudentByIndexNumber)
-// {
-//      Database db;
-
-//     Student adam{
-//         "Adam",
-//         "Bwulski",
-//         "ul. Dobra 134, 00-200 Warszawa",
-//         123456,
-//         "01",
-//         Gender::Male 
-//         };
-//         Student maciek{
-//         "Maciek",
-//         "Asinski",
-//         "ul. Dobra 134, 00-200 Warszawa",
-//         1234567,
-//         "00110103031",
-//         Gender::Male 
-//         };
-
-//     db.add(adam);
-//     db.add(maciek);
-    
-//     db.deleteByIndexNumber(123456);
-//     auto content = db.show();
-//     auto expected = "Maciek Asinski; ul. Dobra 134, 00-200 Warszawa; 1234567; 00110103031; Male\n";
-//     EXPECT_EQ(content,expected);
-
-    
-// }
-
-// TEST(Gender, ShowingProperlyGender)
-// {
-//      Database db;
-
-//     Student Kasia{
-//         "Kasia",
-//         "Markowska",
-//         "ul. Dobra 134, 00-200 Warszawa",
-//         123456,
-//         "01010101011",
-//         Gender::Female 
-//         };
+//     
         
 
 //     db.add(Kasia);
@@ -184,7 +146,7 @@ TEST_F(DatabaseTest, SortByLastName)
     
 // }
 
-// TEST(Pesel, validatePeselSize)
+// TEST_F(DatabaseTest, validatePeselSize)
 // {
 //     PESELvalidation pesel1;
 
