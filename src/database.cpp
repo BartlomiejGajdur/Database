@@ -1,9 +1,9 @@
 #include "database.hpp"
 
 
-void Database::add(const Student &s)
+void Database::add(std::shared_ptr<Record> record)
 {
-        students_.push_back(s);
+        database_.push_back(record);
         
 }
 
@@ -15,19 +15,19 @@ void Database::display() const
 std::string Database::show() const
 {
     std::string result = "";
-    for(auto && student :students_)
-        result += student.show();
+    for(auto && student :database_)
+        result += student->show();
     return result;
 }
 
 std::string Database::findLastName(std::string lastName) const
 {   
     std::string result = "";
-    for(auto && student :students_)
+    for(auto && student :database_)
     {
-        if(lastName == student.getSurname())
+        if(lastName == student->getSurname())
         {
-            result += student.show();
+            result += student->show();
         }
     }
     return result;
@@ -36,11 +36,11 @@ std::string Database::findLastName(std::string lastName) const
 std::string Database::findPesel(std::string pesel)const
 {
     std::string result = "";
-    for(auto && student :students_)
+    for(auto && student :database_)
     {
-        if(pesel == student.getPesel())
+        if(pesel == student->getPesel())
         {
-            result += student.show();
+            result += student->show();
         }
     }
     return result;
@@ -48,29 +48,29 @@ std::string Database::findPesel(std::string pesel)const
 
 void Database::sortBySurname()
 {
-    sort(students_.begin(),students_.end(),[](auto l, auto r)
-    {return l.getSurname() < r.getSurname(); });
+    sort(database_.begin(),database_.end(),[](auto l, auto r)
+    {return l->getSurname() < r->getSurname(); });
 }
 
 void Database::sortByPesel()
 {
-    sort(begin(students_), end(students_),[] (auto l, auto r)
-        {return l.getPesel() < r.getPesel();});
+    sort(begin(database_), end(database_),[] (auto l, auto r)
+        {return l->getPesel() < r->getPesel();});
 }
 
-void Database::deleteByIndexNumber(const std::string& index)
-{
-    auto it = students_.begin();
-    for(auto && students : students_)
-    {
-        if(students.getindexNumber() == index)
-        {
-            students_.erase(it);
-        }
-        it++;
-    }
+// void Database::deleteByIndexNumber(const std::string& index)
+// {
+//     // auto it = students_.begin();
+//     // for(auto && students : students_)
+//     // {
+//     //     if(students->getindexNumber() == index) //Chyba musze ogarnac ze jednak z klasy pierwotnej wychodza wszystkie funckje sa one virtuane w pochodnej override tylko np tam gdzie ma nic nie zwracać ( employyee -> index) zwraca nic np.
+//     //     {
+//     //         students_.erase(it);
+//     //     }
+//     //     it++;
+//     // }
 
-}
+// }
 
 
 

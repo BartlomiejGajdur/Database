@@ -18,8 +18,9 @@ std::string Record::getStatusString() const
 
 std::string Student::show() const 
 {   
-    return "Student: "+getName() + " " + getSurname() + "; "+getAddress()+"; "
+    return getStatusString()+": "+getName() + " " + getSurname() + "; "+getAddress()+"; "
     + getindexNumber()+ "; "+getPesel()+ "; "+getGenderString()+"\n";
 }
+
 
     

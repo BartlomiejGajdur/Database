@@ -40,8 +40,6 @@ Record( Status status,
         std::string getPesel() const {return pesel_;}
         Gender getGender() const {return gender_;}
 
-        
-
         //Setters
         void setStatus(Status status){status_=status;}
         void setName(const std::string& name) {name_=name;}
@@ -50,11 +48,10 @@ Record( Status status,
         void setPesel(const std::string& pesel) {pesel_=pesel;}
         void setGender(Gender gender){gender_=gender;}
 
-        //virtual void setByStatus(const std::string&) const = 0;
-
+        //Functions
         virtual std::string show() const = 0;
         std::string getGenderString() const;
-        std::string getStatusString() const ; // Optional -> IndexNumber for Student / Salary for Employee
+        std::string getStatusString() const; 
 private:  
     Status status_; 
     std::string name_;
@@ -81,38 +78,50 @@ Student(const std::string& name,
         indexNumber_(indexNumber)
         {}
 
-
-        std::string show() const override;
+        //Getter
         std::string getindexNumber() const {return indexNumber_; }
+
+        //Setter
+        void setindexNumber(const std::string& indexNumber) {indexNumber_ = indexNumber;}
+
+        //Functions
+        std::string show() const override;
+
 
 private:
 std::string indexNumber_;
 
+};
+
+class Employee : public Record
+{
+public:
+Employee(const std::string& name,
+        const std::string& surname,
+        const std::string& address,
+        const std::string& pesel,
+        Gender gender,
+        const int& salary) :
+        Record(Status::Employee,name,surname,address,pesel,gender),
+        salary_(salary)
+        {}
+
+        //Getter
+        int getSalary() const {return salary_;}
+
+        //Setter
+        void setSalary(const int& salary) {salary_ = salary;}
+
+        //Functions
+        std::string show() const override
+        {
+            return getStatusString()+": "+getName() + " " + getSurname() + "; "+getAddress()+"; "+
+                std::to_string(getSalary())+"zl "+ "; "+getPesel()+ "; "+getGenderString()+"\n";
+        }
 
 
-
-
-
-
-    // public:
-    // Student(const std::string& name,
-    //         const std::string& lastName,
-    //         const std::string& address,
-    //         const int& indexNumber,
-    //         const std::string& pesel,
-    //         Gender gender);
-    
-    //         
-    //         
-    //         
-            
-    //         std::string GenderToString(Gender gender);
-           
-
-    //         std::map<Gender, std::string> genderPrint{{Gender::Female,"Female"}, {Gender::Male,"Male"}};
-    // private:
-            
-    //         int indexNumber_;
-            
+private:
+int salary_;
+        
 
 };
