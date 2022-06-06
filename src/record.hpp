@@ -50,6 +50,7 @@ Record( Status status,
 
         //Functions
         virtual std::string show() const = 0;
+        virtual std::string getindexNumber() const = 0;
         std::string getGenderString() const;
         std::string getStatusString() const; 
 private:  
@@ -79,7 +80,7 @@ Student(const std::string& name,
         {}
 
         //Getter
-        std::string getindexNumber() const {return indexNumber_; }
+        std::string getindexNumber() const override {return indexNumber_; }
 
         //Setter
         void setindexNumber(const std::string& indexNumber) {indexNumber_ = indexNumber;}
@@ -108,7 +109,7 @@ Employee(const std::string& name,
 
         //Getter
         int getSalary() const {return salary_;}
-
+        std::string getindexNumber() const override {return "123445"; }
         //Setter
         void setSalary(const int& salary) {salary_ = salary;}
 
@@ -119,9 +120,12 @@ Employee(const std::string& name,
                 std::to_string(getSalary())+"zl "+ "; "+getPesel()+ "; "+getGenderString()+"\n";
         }
 
+       
+
 
 private:
 int salary_;
+
         
 
 };

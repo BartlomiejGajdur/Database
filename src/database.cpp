@@ -58,21 +58,18 @@ void Database::sortByPesel()
         {return l->getPesel() < r->getPesel();});
 }
 
-// void Database::deleteByIndexNumber(const std::string& index)
-// {
-//     // auto it = students_.begin();
-//     // for(auto && students : students_)
-//     // {
-//     //     if(students->getindexNumber() == index) //Chyba musze ogarnac ze jednak z klasy pierwotnej wychodza wszystkie funckje sa one virtuane w pochodnej override tylko np tam gdzie ma nic nie zwracać ( employyee -> index) zwraca nic np.
-//     //     {
-//     //         students_.erase(it);
-//     //     }
-//     //     it++;
-//     // }
-
-// }
-
-
+void Database::deleteByIndexNumber(const std::string& index)
+{
+    
+    if (database_.size() == 0)
+    {
+        std::cout << "No records in database" << std::endl;
+        
+    }
+    database_.erase(std::find_if(begin(database_), end(database_), [&index](const auto el)
+                                 { return el->getindexNumber() == index; }));
+    
+}
 
 void Database::mainMenu() const
 {   

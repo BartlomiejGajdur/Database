@@ -14,7 +14,7 @@ class Database {
         std::string findPesel(std::string pesel) const;
         void sortBySurname();
         void sortByPesel();
-        //void deleteByIndexNumber(const std::string&);
+        void deleteByIndexNumber(const std::string&);
         void mainMenu() const ;
         void chooseFromMenu();
     private:
