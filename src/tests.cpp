@@ -133,18 +133,18 @@ TEST_F(DatabaseTest, SortByPesel)
 
  }
 
-// TEST_F(DatabaseTest, DeleteStudentByIndexNumber)
-// {
+TEST_F(DatabaseTest, DeleteStudentByIndexNumber)
+{
      
-//     db.add(std::make_shared<Student>(Krzysiek));
-//     db.add(std::make_shared<Student>(Adam));
-    
-//     db.deleteByIndexNumber("234567");
-//     auto content = db.show();
-//     auto expected = "Student: Adam Kowalski; ul. Dobra 134, 00-200 Warszawa; 123456; 99110103633; Male\n";
-//     EXPECT_EQ(content,expected);
-    
-// }
+    db.add(std::make_shared<Student>(Krzysiek));
+    db.add(std::make_shared<Student>(Adam));
+    db.add(std::make_shared<Employee>(P_antek));
+    db.deleteByIndexNumber("234567");
+    auto content = db.show();
+    auto expected = "Student: Adam Kowalski; ul. Dobra 134, 00-200 Warszawa; 123456; 99110103633; Male\nEmployee: Antek Antkowski; Makowa 15; 2500zl ; 9911929292; Male\n";
+    EXPECT_EQ(content,expected);
+     
+}
 
 TEST_F(DatabaseTest, ShowingProperlyGender)
 {
