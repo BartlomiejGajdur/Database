@@ -71,6 +71,22 @@ void Database::deleteByIndexNumber(const std::string& index)
     
 }
 
+void Database::modifySalary(const std::string& pesel, unsigned int salary)
+{
+    //napoczatku musimy znalezc a nastepnie przypisac nowa kwote. 
+    //Proba znalezienia peselu studenta i zmiay salary nie konczy sie dobrze
+     auto tempIter = std::find_if(begin(database_), end(database_), [&pesel](const auto el)
+                                 { return el->getPesel() == pesel; });
+    std::shared_ptr<Record> tempPTR =  *tempIter;
+    if (tempPTR != nullptr && tempPTR->getStatus() == Status::Employee)
+    {
+        tempPTR->setSalary(salary);   
+    }
+    else{
+        tempPTR = nullptr;
+    }
+}
+
 void Database::mainMenu() const
 {   
     system("clear");
