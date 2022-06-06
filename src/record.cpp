@@ -22,5 +22,11 @@ std::string Student::show() const
     + getindexNumber()+ "; "+getPesel()+ "; "+getGenderString()+"\n";
 }
 
+ std::string Employee::show() const 
+     {
+    return getStatusString()+": "+getName() + " " + getSurname() + "; "+getAddress()+"; "+
+        std::to_string(getSalary())+"zl "+ "; "+getPesel()+ "; "+getGenderString()+"\n";
+    }
+
 
     

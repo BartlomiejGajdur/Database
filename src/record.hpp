@@ -109,16 +109,13 @@ Employee(const std::string& name,
 
         //Getter
         int getSalary() const {return salary_;}
-        std::string getindexNumber() const override {return "123445"; }
+        std::string getindexNumber() const override {return ""; }
         //Setter
         void setSalary(const int& salary) {salary_ = salary;}
 
         //Functions
-        std::string show() const override
-        {
-            return getStatusString()+": "+getName() + " " + getSurname() + "; "+getAddress()+"; "+
-                std::to_string(getSalary())+"zl "+ "; "+getPesel()+ "; "+getGenderString()+"\n";
-        }
+        std::string show() const override;
+
 
        
 
