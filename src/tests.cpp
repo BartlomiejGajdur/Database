@@ -173,3 +173,13 @@ TEST_F(DatabaseTest, Employeeds)
     EXPECT_EQ(content,expected);
     
 }
+
+TEST_F(DatabaseTest, DatabaseTest_ModifySalaryByPesel_Test)
+{
+    db.add(std::make_shared<Employee>(P_marcelina));
+    db.modifySalary("2032323232",5000);
+    auto content = db.show();
+    auto expected = "Employee: Marcelina Tynska; Basztowa 15; 5000zl ; 2032323232; Female\n";
+    EXPECT_EQ(content,expected);
+    
+}
